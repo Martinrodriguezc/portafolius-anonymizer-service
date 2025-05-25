@@ -1,0 +1,25 @@
+# Entorno virtual de Python
+venv/
+ENV/
+env/
+.venv/
+
+# Archivos y carpetas temporales de Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Archivos temporales y de debug
+debug_frame1.jpg
+*.log
+
+# Carpeta de archivos temporales y videos
+temp/
+*.mp4
+*.avi
+
+# Configuración de editores
+.vscode/
+.idea/
+*.swp
+.DS_Store
