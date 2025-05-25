@@ -1,15 +1,22 @@
 FROM python:3.10-slim
 
-# Instala dependencias del sistema (descomenta la línea siguiente si necesitas OCR)
-# RUN apt-get update && apt-get install -y tesseract-ocr && apt-get clean
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        gcc \
+        libgl1 \
+        libglib2.0-0 \
+        libsm6 \
+        libxrender1 \
+        libxext6 \
+        ffmpeg \
+    && apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
-# Copia los archivos de dependencias primero
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copia el resto del código
 COPY . .
 
 EXPOSE 8000

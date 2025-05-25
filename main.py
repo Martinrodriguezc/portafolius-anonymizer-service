@@ -10,7 +10,7 @@ os.makedirs(TEMP_DIR, exist_ok=True)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],  # O ["*"] para todos los orígenes (no recomendado en prod)
+    allow_origins=["http://localhost:5173", "https://portafolius-dev.netlify.app"],
     allow_credentials=True,
     allow_methods=["*"],    
     allow_headers=["*"],    
