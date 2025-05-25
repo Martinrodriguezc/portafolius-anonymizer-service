@@ -1,4 +1,5 @@
 import cv2
+import subprocess
 
 def anonymize_video(input_path, output_path):
     cap = cv2.VideoCapture(input_path)
@@ -20,3 +21,14 @@ def anonymize_video(input_path, output_path):
         out.write(frame)
     cap.release()
     out.release()
+
+def convert_to_compatible(input_path, output_path):
+    # Convierte a mp4 universal (video H.264, audio AAC)
+    cmd = [
+        "ffmpeg", "-y", "-i", input_path,
+        "-c:v", "libx264", "-preset", "veryfast", "-crf", "23",
+        "-c:a", "aac", "-b:a", "128k",
+        "-movflags", "+faststart",
+        output_path
+    ]
+    subprocess.run(cmd, check=True)
